@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentInstructionBinding
 
 class InstructionFragment : Fragment() {
@@ -16,6 +18,9 @@ class InstructionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentInstructionBinding.inflate(layoutInflater)
+        binding.button4.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_instructionFragment_to_homeFragment)
+        }
         return binding.root
     }
 }
