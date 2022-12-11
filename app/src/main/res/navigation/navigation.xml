@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            app:destination="@id/welcomeFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
@@ -30,7 +31,8 @@
         tools:layout="@layout/fragment_instruction" >
         <action
             android:id="@+id/action_instructionFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment" >
+        </action>
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -40,11 +42,29 @@
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_formFragment"
+            app:destination="@id/formFragment" />
+        <argument
+            android:name="newShoe"
+            app:argType="com.example.shoestore.home.model.Shoe" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.shoestore.details.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="shoe"
+            app:argType="com.example.shoestore.home.model.Shoe" />
+    </fragment>
+    <fragment
+        android:id="@+id/formFragment"
+        android:name="com.example.shoestore.form.FormFragment"
+        android:label="fragment_form"
+        tools:layout="@layout/fragment_form" >
+        <action
+            android:id="@+id/action_formFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

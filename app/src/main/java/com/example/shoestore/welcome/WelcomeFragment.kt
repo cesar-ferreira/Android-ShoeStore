@@ -18,7 +18,7 @@ class WelcomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentWelcomeBinding.inflate(layoutInflater)
-        binding.button5.setOnClickListener {
+        binding.buttonNext.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_welcomeFragment_to_instructionFragment)
         }
         return binding.root

@@ -5,5 +5,17 @@
     <string name="login_button">Login</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create">Cadastrar</string>
+    <string name="welcome_title">Welcome</string>
+    <string name="welcome_description">Seja bem vindo ao aplicativo de loja de sapatos feito para o nanodegree da udacity</string>
+    <string name="button_next">Próximo</string>
+    <string name="instructionTitle">Instruções</string>
+    <string name="instructionDescription">Ao clicar em um item da lista, será direcionado para tela de detalhes</string>
+    <string name="instructionButton">Concluir</string>
+    <string name="details">Detalhes</string>
+    <string name="name">Nome:</string>
+    <string name="size">Tamanho:</string>
+    <string name="company">Empresa:</string>
+    <string name="description">Descrição:</string>
 
 </resources>

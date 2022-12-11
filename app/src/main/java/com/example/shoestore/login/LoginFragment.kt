@@ -21,6 +21,7 @@ class LoginFragment : Fragment() {
         binding = FragmentLoginBinding.inflate(layoutInflater)
 
         validateLogin()
+        setupCreateButton()
 
         return binding.root
     }
@@ -28,7 +29,7 @@ class LoginFragment : Fragment() {
     private fun validateLogin() {
         binding.apply {
 
-            button.isEnabled = false
+            loginButton.isEnabled = false
 
             editTextEmailAddress.doAfterTextChanged {
                 if(it.isNullOrBlank()) {
@@ -60,9 +61,17 @@ class LoginFragment : Fragment() {
 
     private fun enabledButton() {
         binding.apply {
-            button.isEnabled = validateEmail() && validatePassword()
+            loginButton.isEnabled = validateEmail() && validatePassword()
 
-            button.setOnClickListener {
+            loginButton.setOnClickListener {
+                Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_welcomeFragment)
+            }
+        }
+    }
+
+    private fun setupCreateButton() {
+        binding.apply {
+            createButton.setOnClickListener {
                 Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_welcomeFragment)
             }
         }
