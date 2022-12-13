@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- The was used because the arrangement of all elements behaves linearly and without a specific rule -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
@@ -16,4 +19,4 @@
 
     </androidx.fragment.app.FragmentContainerView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

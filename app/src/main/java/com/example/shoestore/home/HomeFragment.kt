@@ -30,6 +30,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(layoutInflater)
+        binding.controller = this
 
         setupMenu()
 
@@ -42,10 +43,6 @@ class HomeFragment : Fragment() {
             shoeList = it as ArrayList<Shoe>
             setupRecyclerView()
         })
-
-        binding.floatingActionButton.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_formFragment)
-        }
 
 
         return binding.root
@@ -74,6 +71,12 @@ class HomeFragment : Fragment() {
     private fun checkAddShoe() {
         args.newShoe.let {
             viewModel.addShoe(it)
+        }
+    }
+
+    fun navigateToForm() {
+        binding.floatingActionButton.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_formFragment)
         }
     }
 }
