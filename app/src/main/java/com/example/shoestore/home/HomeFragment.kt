@@ -2,21 +2,18 @@ package com.example.shoestore.home
 
 import android.os.Bundle
 import android.view.*
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentHomeBinding
-import com.example.shoestore.form.FormFragmentDirections
-import com.example.shoestore.home.business.ShoeAdapter
+import com.example.shoestore.databinding.ShoeItemBinding
 import com.example.shoestore.home.model.Shoe
-import com.example.shoestore.welcome.WelcomeFragmentDirections
 
 class HomeFragment : Fragment() {
 
@@ -26,7 +23,6 @@ class HomeFragment : Fragment() {
     val args: HomeFragmentArgs by navArgs()
 
     private var shoeList : ArrayList<Shoe> = ArrayList()
-    private lateinit var adapter : ShoeAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,18 +40,11 @@ class HomeFragment : Fragment() {
 
         viewModel.shoes.observe(viewLifecycleOwner, Observer {
             shoeList = it as ArrayList<Shoe>
-            setupRecyclerView()
+            setupListView(binding.shoes, shoeList)
         })
 
 
         return binding.root
-    }
-
-    private fun setupRecyclerView() {
-        adapter = ShoeAdapter(shoeList)
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView.adapter = adapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -77,11 +66,18 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun setupListView(list: LinearLayout, items: ArrayList<Shoe>) {
+        list.removeAllViews()
+        items.forEach { shoe ->
+            binding = FragmentHomeBinding.inflate(layoutInflater)
+            val shoeBinding = ShoeItemBinding.inflate(layoutInflater)
+            shoeBinding.shoeTitle.text = shoe.name
+            shoeBinding.shoeDescription.text = shoe.description
+            list.addView(shoeBinding.root)
+        }
+    }
+
     fun navigateToForm() {
         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToFormFragment())
-
-//        binding.floatingActionButton.setOnClickListener {
-//            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_formFragment)
-//        }
     }
 }
