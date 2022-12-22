@@ -7,13 +7,16 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentHomeBinding
+import com.example.shoestore.form.FormFragmentDirections
 import com.example.shoestore.home.business.ShoeAdapter
 import com.example.shoestore.home.model.Shoe
+import com.example.shoestore.welcome.WelcomeFragmentDirections
 
 class HomeFragment : Fragment() {
 
@@ -75,8 +78,10 @@ class HomeFragment : Fragment() {
     }
 
     fun navigateToForm() {
-        binding.floatingActionButton.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_formFragment)
-        }
+        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToFormFragment())
+
+//        binding.floatingActionButton.setOnClickListener {
+//            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_formFragment)
+//        }
     }
 }

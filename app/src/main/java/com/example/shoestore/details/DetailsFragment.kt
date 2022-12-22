@@ -19,6 +19,7 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetailsBinding.inflate(layoutInflater)
+        binding.controller = this
 
         setupUI()
 

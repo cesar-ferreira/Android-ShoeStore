@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentWelcomeBinding
 
@@ -18,10 +19,12 @@ class WelcomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentWelcomeBinding.inflate(layoutInflater)
-        binding.buttonNext.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_welcomeFragment_to_instructionFragment)
-        }
+        binding.controller = this
+
         return binding.root
     }
 
+    fun navigateToInstructions() {
+        findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionFragment())
+    }
 }

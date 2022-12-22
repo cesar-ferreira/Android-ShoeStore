@@ -21,6 +21,8 @@ class FormFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFormBinding.inflate(layoutInflater)
+        binding.controller = this
+
         validateForm()
         return binding.root
     }

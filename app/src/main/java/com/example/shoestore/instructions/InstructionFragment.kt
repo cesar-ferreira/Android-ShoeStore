@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.shoestore.databinding.FragmentInstructionBinding
 import com.example.shoestore.home.model.Shoe
 
@@ -18,12 +19,18 @@ class InstructionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentInstructionBinding.inflate(layoutInflater)
+        binding.controller = this
 
+
+//        binding.buttonNext.setOnClickListener {
+//                Navigation.findNavController(it).navigate(InstructionFragmentDirections.actionInstructionFragmentToHomeFragment(shoe))
+//        }
+        return binding.root
+    }
+
+    fun navigateToHome() {
         val shoe: Shoe = Shoe(name = "Sapato 13", description = "Descrição 13", size = "1.0", company = "Empresa 13")
 
-        binding.buttonNext.setOnClickListener {
-                Navigation.findNavController(it).navigate(InstructionFragmentDirections.actionInstructionFragmentToHomeFragment(shoe))
-        }
-        return binding.root
+        findNavController().navigate(InstructionFragmentDirections.actionInstructionFragmentToHomeFragment(shoe))
     }
 }

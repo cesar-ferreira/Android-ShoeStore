@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentLoginBinding
+import com.example.shoestore.welcome.WelcomeFragmentDirections
 
 class LoginFragment : Fragment() {
 
@@ -19,6 +21,7 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentLoginBinding.inflate(layoutInflater)
+        binding.controller = this
 
         validateLogin()
         setupCreateButton()
@@ -59,13 +62,9 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun enabledButton() {
+    fun enabledButton() {
         binding.apply {
             loginButton.isEnabled = validateEmail() && validatePassword()
-
-            loginButton.setOnClickListener {
-                Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_welcomeFragment)
-            }
         }
     }
 
@@ -75,5 +74,9 @@ class LoginFragment : Fragment() {
                 Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_welcomeFragment)
             }
         }
+    }
+
+    fun navigateToWelcome() {
+        findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
     }
 }
