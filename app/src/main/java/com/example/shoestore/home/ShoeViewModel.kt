@@ -3,7 +3,6 @@ package com.example.shoestore.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.Navigation
 import com.example.shoestore.home.model.Shoe
 
 class ShoeViewModel: ViewModel() {
@@ -12,8 +11,7 @@ class ShoeViewModel: ViewModel() {
     val shoes: LiveData<List<Shoe>>
         get() = _shoes
 
-
-    fun getShoes() {
+    init {
         _shoes.value = createShoeList()
     }
 

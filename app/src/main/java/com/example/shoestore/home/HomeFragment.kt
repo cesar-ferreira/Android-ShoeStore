@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -18,9 +19,7 @@ import com.example.shoestore.home.model.Shoe
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var viewModel: ShoeViewModel
-
-    val args: HomeFragmentArgs by navArgs()
+    private val viewModel: ShoeViewModel by activityViewModels()
 
     private var shoeList : ArrayList<Shoe> = ArrayList()
 
@@ -32,11 +31,6 @@ class HomeFragment : Fragment() {
         binding.controller = this
 
         setupMenu()
-
-        viewModel = ViewModelProvider(this).get(ShoeViewModel::class.java)
-        viewModel.getShoes()
-
-        checkAddShoe()
 
         viewModel.shoes.observe(viewLifecycleOwner, Observer {
             shoeList = it as ArrayList<Shoe>
@@ -58,12 +52,6 @@ class HomeFragment : Fragment() {
 
     private fun setupMenu() {
         setHasOptionsMenu(true)
-    }
-
-    private fun checkAddShoe() {
-        args.newShoe.let {
-            viewModel.addShoe(it)
-        }
     }
 
     private fun setupListView(list: LinearLayout, items: ArrayList<Shoe>) {

@@ -21,16 +21,10 @@ class InstructionFragment : Fragment() {
         binding = FragmentInstructionBinding.inflate(layoutInflater)
         binding.controller = this
 
-
-//        binding.buttonNext.setOnClickListener {
-//                Navigation.findNavController(it).navigate(InstructionFragmentDirections.actionInstructionFragmentToHomeFragment(shoe))
-//        }
         return binding.root
     }
 
     fun navigateToHome() {
-        val shoe: Shoe = Shoe(name = "Sapato 13", description = "Descrição 13", size = "1.0", company = "Empresa 13")
-
-        findNavController().navigate(InstructionFragmentDirections.actionInstructionFragmentToHomeFragment(shoe))
+        findNavController().navigate(InstructionFragmentDirections.actionInstructionFragmentToHomeFragment())
     }
 }

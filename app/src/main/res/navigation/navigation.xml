@@ -32,7 +32,7 @@
         <action
             android:id="@+id/action_instructionFragment_to_homeFragment"
             app:destination="@id/homeFragment"
-            app:popUpTo="@id/loginFragment"></action>
+            app:popUpTo="@id/loginFragment"/>
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -45,9 +45,6 @@
         <action
             android:id="@+id/action_homeFragment_to_formFragment"
             app:destination="@id/formFragment" />
-        <argument
-            android:name="newShoe"
-            app:argType="com.example.shoestore.home.model.Shoe" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -62,10 +59,5 @@
         android:id="@+id/formFragment"
         android:name="com.example.shoestore.form.FormFragment"
         android:label="fragment_form"
-        tools:layout="@layout/fragment_form" >
-        <action
-            android:id="@+id/action_formFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_form" />
 </navigation>

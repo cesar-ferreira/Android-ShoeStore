@@ -6,18 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentFormBinding
-import com.example.shoestore.home.HomeFragmentDirections
+import com.example.shoestore.home.ShoeViewModel
 import com.example.shoestore.home.model.Shoe
-import com.example.shoestore.login.LoginFragmentDirections
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class FormFragment : Fragment() {
 
     private lateinit var binding: FragmentFormBinding
+    private val viewModel: ShoeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -94,13 +92,11 @@ class FormFragment : Fragment() {
     private fun enabledButton() {
         binding.apply {
             button.isEnabled = validateName() && validateSize() && validateCompany() && validateDescription()
-
         }
     }
 
     fun submit() {
-        binding.apply {
-            findNavController().navigate(FormFragmentDirections.actionFormFragmentToHomeFragment(shoe!!))
-        }
+        viewModel.addShoe(binding.shoe!!)
+        findNavController().popBackStack()
     }
 }
