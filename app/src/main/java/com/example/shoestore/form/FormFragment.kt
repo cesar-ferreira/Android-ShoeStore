@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentFormBinding
 import com.example.shoestore.home.HomeFragmentDirections
 import com.example.shoestore.home.model.Shoe
+import com.example.shoestore.login.LoginFragmentDirections
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class FormFragment : Fragment() {
 
@@ -22,6 +25,7 @@ class FormFragment : Fragment() {
     ): View {
         binding = FragmentFormBinding.inflate(layoutInflater)
         binding.controller = this
+        binding.shoe = Shoe("", "", "", "")
 
         validateForm()
         return binding.root
@@ -91,12 +95,12 @@ class FormFragment : Fragment() {
         binding.apply {
             button.isEnabled = validateName() && validateSize() && validateCompany() && validateDescription()
 
-            button.setOnClickListener {
-                val shoe = Shoe(name = editTextName.text.toString(), size = editTextNumber.text.toString(), company = editTextCompany.text.toString(), description = editTextDescription.text.toString())
+        }
+    }
 
-                Navigation.findNavController(it).navigate(FormFragmentDirections.actionFormFragmentToHomeFragment(shoe))
-
-            }
+    fun submit() {
+        binding.apply {
+            findNavController().navigate(FormFragmentDirections.actionFormFragmentToHomeFragment(shoe!!))
         }
     }
 }

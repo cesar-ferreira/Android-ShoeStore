@@ -2,8 +2,6 @@
 <!-- The was used because the arrangement of all elements behaves linearly and without a specific rule -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -12,13 +10,13 @@
         android:id="@+id/shoeTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp" />
+        android:layout_marginStart="@dimen/medium"
+        android:layout_marginTop="@dimen/medium" />
 
     <TextView
         android:id="@+id/shoeDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp" />
+        android:layout_marginTop="@dimen/small"
+        android:layout_marginStart="@dimen/medium" />
 </LinearLayout>

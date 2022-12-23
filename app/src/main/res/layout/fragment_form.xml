@@ -7,6 +7,10 @@
         <variable
             name="controller"
             type="com.example.shoestore.form.FormFragment" />
+
+        <variable
+            name="shoe"
+            type="com.example.shoestore.home.model.Shoe" />
     </data>
 
     <!-- The constraintlayout was used because it is a more complex screen with several elements that align -->
@@ -25,6 +29,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="@string/hintName"
+            android:text="@={shoe.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,6 +42,7 @@
             android:ems="10"
             android:inputType="numberDecimal"
             android:hint="@string/hintSize"
+            android:text="@={shoe.size}"
             app:layout_constraintEnd_toEndOf="@+id/editTextName"
             app:layout_constraintStart_toStartOf="@+id/editTextName"
             app:layout_constraintTop_toBottomOf="@+id/editTextName" />
@@ -48,6 +54,7 @@
             android:layout_marginTop="8dp"
             android:ems="10"
             android:hint="@string/hintCompany"
+            android:text="@={shoe.company}"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="@+id/editTextNumber"
             app:layout_constraintStart_toStartOf="@+id/editTextNumber"
@@ -61,6 +68,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="@string/hintDescription"
+            android:text="@={shoe.description}"
             app:layout_constraintEnd_toEndOf="@+id/editTextCompany"
             app:layout_constraintStart_toStartOf="@+id/editTextCompany"
             app:layout_constraintTop_toBottomOf="@+id/editTextCompany" />
@@ -73,6 +81,7 @@
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
             android:text="@string/add"
+            android:onClick="@{() -> controller.submit()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
